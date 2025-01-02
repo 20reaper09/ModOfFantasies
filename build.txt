@@ -1,0 +1,3 @@
+displayName = Mod of Fantasies
+author = Reaper, Orion, Vaema
+version = 0.1

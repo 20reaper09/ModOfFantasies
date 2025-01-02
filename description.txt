@@ -1,0 +1,6 @@
+A small content mod with a lot of world generation
+
+Devs include:
+Reaper
+Orion
+Vaema
