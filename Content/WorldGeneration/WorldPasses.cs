@@ -1,4 +1,5 @@
-﻿using ModOfFantasies.Content.WorldGeneration.UndergroundScavage;
+﻿using ModOfFantasies.Content.WorldGeneration;
+using ModOfFantasies.Content.WorldGeneration.UndergroundScavage;
 using System.Collections.Generic;
 using Terraria.ModLoader;
 using Terraria.WorldBuilding;
@@ -18,9 +19,8 @@ namespace TrashMod.Content.WorldGeneration
             int ScavagePass = tasks.FindIndex(genPass => genPass.Name.Equals("Final Cleanup"));
             if (ScavagePass != -1)
             {
-                tasks.Insert(ScavagePass + 1, new UndergroundScavage("Scavage Gen", 237.4298f));
+                tasks.Insert(ScavagePass + 1, new UndergroundScavage("Scavage Gen", 237.4299f));
             }
         }
-
     }
 }

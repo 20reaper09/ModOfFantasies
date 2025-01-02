@@ -87,7 +87,6 @@ namespace ModOfFantasies.Content.WorldGeneration
             //torches
             WorldGen.PlaceTile(houseBaseX + 21, houseBaseY - 12, TileID.Torches);
             WorldGen.PlaceTile(houseBaseX + 29, houseBaseY - 12, TileID.Torches);
-
             WorldGen.PlaceTile(houseBaseX + 21, houseBaseY - 6, TileID.Torches);
             WorldGen.PlaceTile(houseBaseX + 29, houseBaseY - 6, TileID.Torches);
 
@@ -103,39 +102,26 @@ namespace ModOfFantasies.Content.WorldGeneration
             WorldGen.PlaceTile(houseBaseX + 20, houseBaseY - 1, TileID.ClosedDoor);
             WorldGen.PlaceTile(houseBaseX + 30, houseBaseY - 1, TileID.ClosedDoor);
 
-            //top chest
-            int[] randomItems = { ItemID.HealingPotion, ItemID.IronBar, ItemID.GoldBar, ItemID.Apple, ItemID.ManaPotion };
-            int chestIndex = WorldGen.PlaceChest(houseBaseX + 27, houseBaseY - 8);
+            PlaceChest(houseBaseX + 27, houseBaseY - 8);
+            PlaceChest(houseBaseX + 27, houseBaseY - 1);
+        }
+        readonly int[] randomItems = { ItemID.HealingPotion, ItemID.IronBar, ItemID.GoldBar, ItemID.Apple, ItemID.ManaPotion };
+        private void PlaceChest(int xvv, int yvv)
+        {
+            int chestIndex = WorldGen.PlaceChest(xvv, yvv);
             if (chestIndex >= 0)
             {
                 Chest chest = Main.chest[chestIndex];
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     int randomItem = randomItems[Main.rand.Next(randomItems.Length)];
                     chest.item[i] = new Item();
                     chest.item[i].SetDefaults(randomItem);
                     chest.item[i].stack = Main.rand.Next(1, 11);
                 }
-                chest.item[4] = new Item();
-                chest.item[4].SetDefaults(ItemID.GoldenDelight);
-                chest.item[4].stack = 1;
-            }
-
-            //bottom chest
-            int chestIndex1 = WorldGen.PlaceChest(houseBaseX + 27, houseBaseY - 1);
-            if (chestIndex1 >= 0)
-            {
-                Chest chest = Main.chest[chestIndex1];
-                for (int i = 0; i < 4; i++)
-                {
-                    int randomItem = randomItems[Main.rand.Next(randomItems.Length)];
-                    chest.item[i] = new Item();
-                    chest.item[i].SetDefaults(randomItem);
-                    chest.item[i].stack = Main.rand.Next(1, 11);
-                }
-                chest.item[4] = new Item();
-                chest.item[4].SetDefaults(ItemID.GoldenDelight);
-                chest.item[4].stack = 1;
+                chest.item[7] = new Item();
+                chest.item[7].SetDefaults(ItemID.GoldenDelight);
+                chest.item[7].stack = 1;
             }
         }
     }
