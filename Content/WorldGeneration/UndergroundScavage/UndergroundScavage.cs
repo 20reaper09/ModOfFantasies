@@ -12,14 +12,14 @@ namespace ModOfFantasies.Content.WorldGeneration.UndergroundScavage
         protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
         {
             progress.Message = "Generating Underground Scavage";
-            scavageGen(Main.rand.Next(400, 600), Main.rand.Next(175, 250));
-            scavageGen(Main.rand.Next(-600, -400), Main.rand.Next(175, 250));
-            scavageGen(Main.rand.Next(700, 900), Main.rand.Next(300, 350));
-            scavageGen(Main.rand.Next(-900, -700), Main.rand.Next(300, 350));
-            scavageGen(Main.rand.Next(950, 1050), Main.rand.Next(400, 450));
-            scavageGen(Main.rand.Next(-1050, -950), Main.rand.Next(400, 450));
+            ScavageGen(WorldGen.genRand.Next(400, 600), WorldGen.genRand.Next(175, 250));
+            ScavageGen(WorldGen.genRand.Next(-600, -400), WorldGen.genRand.Next(175, 250));
+            ScavageGen(WorldGen.genRand.Next(700, 900), WorldGen.genRand.Next(300, 350));
+            ScavageGen(WorldGen.genRand.Next(-900, -700), WorldGen.genRand.Next(300, 350));
+            ScavageGen(WorldGen.genRand.Next(950, 1050), WorldGen.genRand.Next(400, 450));
+            ScavageGen(WorldGen.genRand.Next(-1050, -950), WorldGen.genRand.Next(400, 450));
         }
-        private void scavageGen(int xv, int yv)
+        private void ScavageGen(int xv, int yv)
         {
             int spawnX = Main.spawnTileX;
             int spawnY = Main.spawnTileY;
@@ -79,7 +79,7 @@ namespace ModOfFantasies.Content.WorldGeneration.UndergroundScavage
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    WorldGen.PlacePot(xpos + Main.rand.Next(-5, 38), ypos + potposy);
+                    WorldGen.PlacePot(xpos + WorldGen.genRand.Next(-5, 38), ypos + potposy);
                 }
             }
 
@@ -88,7 +88,7 @@ namespace ModOfFantasies.Content.WorldGeneration.UndergroundScavage
             {
                 for (int y = ypos; y <= ypos + 36; y++)
                 {
-                    if (Main.rand.NextFloat() < 0.1f)
+                    if (WorldGen.genRand.NextFloat() < 0.1f)
                     {
                         if (Main.tile[x, y].HasTile == false) 
                         {
