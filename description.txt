@@ -1,6 +1,6 @@
-A small content mod with a lot of world generation
+A small content mod with the primary focus of world generation.
 
-Devs include:
-Reaper
-Orion
-Vaema
+Developers:
+- Reaper (Lead Spriter, Alternative Programmer)
+- Orion (Lead Musician, Sound Designer)
+- Vaema (Lead Programmer)

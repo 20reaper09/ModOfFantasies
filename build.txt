@@ -1,3 +1,10 @@
 displayName = Mod of Fantasies
 author = Reaper, Orion, Vaema
 version = 0.1
+
+hideCode = false
+hideResources = false
+includeSource = true
+includePDB = true
+
+buildIgnore = *.csproj, *.user, *.md, obj\*, bin\*, .vs\*, .vscode\*, .git\*, .github\*, *.ymlm, *.editorconfig, Properties\*, *.gitignore

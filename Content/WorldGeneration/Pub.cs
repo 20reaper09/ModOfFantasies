@@ -8,6 +8,7 @@ namespace ModOfFantasies.Content.WorldGeneration
     public class Pub : GenPass
     {
         public Pub(string name, float loadWeight) : base(name, loadWeight) { }
+
         protected override void ApplyPass(GenerationProgress progress, GameConfiguration configuration)
         {
             progress.Message = "Generating an underground pub...";
@@ -16,19 +17,19 @@ namespace ModOfFantasies.Content.WorldGeneration
             int spawnY = Main.spawnTileY;
             int houseBaseX = spawnX + Main.rand.Next(-200, 200);
             int houseBaseY = spawnY + 80;
+
             for (int x = houseBaseX + 20; x < houseBaseX + 31; x++)
             {
                 for (int y = houseBaseY - 13; y < houseBaseY + 3; y++)
                 {
                     if (y == houseBaseY + 1 || y == houseBaseY + 2)
-                    {
                         continue;
-                    }
+
                     Main.tile[x, y].ClearEverything();
                 }
             }
 
-            //floor
+            // Floor
             for (int i = 0; i < 11; i++)
             {
                 int x = houseBaseX + 30 - i;
@@ -37,7 +38,7 @@ namespace ModOfFantasies.Content.WorldGeneration
                 WorldGen.PlaceTile(x, y, TileID.GrayBrick);
             }
 
-            //walls
+            // Walls
             for (int x = 0; x < 9; x++)
             {
                 for (int y = 1; y < 13; y++)
@@ -49,7 +50,7 @@ namespace ModOfFantasies.Content.WorldGeneration
                 }
             }
 
-            //platform
+            // Platforms
             for (int i = 0; i < 11; i++)
             {
                 int x = houseBaseX + 30 - i;
@@ -57,7 +58,7 @@ namespace ModOfFantasies.Content.WorldGeneration
                 WorldGen.PlaceTile(x, y, TileID.Platforms);
             }
 
-            //roof
+            // Roof
             for (int i = 0; i < 11; i++)
             {
                 int x = houseBaseX + 30 - i;
@@ -66,16 +67,7 @@ namespace ModOfFantasies.Content.WorldGeneration
                 WorldGen.PlaceTile(x, y, TileID.GrayBrick);
             }
 
-            //right side
-            for (int i = 4; i < 13; i++)
-            {
-                int x = houseBaseX + 30;
-                int y = houseBaseY - i;
-                Main.tile[x, y].ClearEverything();
-                WorldGen.PlaceTile(x, y, TileID.GrayBrick);
-            }
-
-            //left side
+            // Left side
             for (int i = 4; i < 13; i++)
             {
                 int x = houseBaseX + 20;
@@ -84,31 +76,41 @@ namespace ModOfFantasies.Content.WorldGeneration
                 WorldGen.PlaceTile(x, y, TileID.GrayBrick);
             }
 
-            //torches
+            // Right side
+            for (int i = 4; i < 13; i++)
+            {
+                int x = houseBaseX + 30;
+                int y = houseBaseY - i;
+                Main.tile[x, y].ClearEverything();
+                WorldGen.PlaceTile(x, y, TileID.GrayBrick);
+            }
+
+            // Torches
             WorldGen.PlaceTile(houseBaseX + 21, houseBaseY - 12, TileID.Torches);
             WorldGen.PlaceTile(houseBaseX + 29, houseBaseY - 12, TileID.Torches);
             WorldGen.PlaceTile(houseBaseX + 21, houseBaseY - 6, TileID.Torches);
             WorldGen.PlaceTile(houseBaseX + 29, houseBaseY - 6, TileID.Torches);
 
-            //table
+            // Tables
             WorldGen.PlaceTile(houseBaseX + 23, houseBaseY - 8, TileID.Tables);
             WorldGen.PlaceTile(houseBaseX + 23, houseBaseY - 1, TileID.Tables);
 
-            //chairs
+            // Chairs
             WorldGen.PlaceTile(houseBaseX + 25, houseBaseY - 8, TileID.Chairs);
             WorldGen.PlaceTile(houseBaseX + 25, houseBaseY - 1, TileID.Chairs);
 
-            //doors
+            // Doors
             WorldGen.PlaceTile(houseBaseX + 20, houseBaseY - 1, TileID.ClosedDoor);
             WorldGen.PlaceTile(houseBaseX + 30, houseBaseY - 1, TileID.ClosedDoor);
 
             PlaceChest(houseBaseX + 27, houseBaseY - 8);
             PlaceChest(houseBaseX + 27, houseBaseY - 1);
         }
+
         readonly int[] randomItems = { ItemID.HealingPotion, ItemID.IronBar, ItemID.GoldBar, ItemID.Apple, ItemID.ManaPotion };
-        private void PlaceChest(int xvv, int yvv)
+        private void PlaceChest(int x, int y)
         {
-            int chestIndex = WorldGen.PlaceChest(xvv, yvv);
+            int chestIndex = WorldGen.PlaceChest(x, y);
             if (chestIndex >= 0)
             {
                 Chest chest = Main.chest[chestIndex];
